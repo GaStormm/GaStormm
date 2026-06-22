@@ -36,18 +36,18 @@ Fora do trabalho, mantenho um **homelab com cluster Kubernetes** onde pratico co
 - MetalLB + Traefik configurados para load balancing e ingress
 
 ### Stack de Monitoramento
-| Serviço | IP | Função |
-|---|---|---|
-| AdGuard | 192.168.69.151 | DNS filtering |
-| Zabbix | 192.168.69.152 | Infrastructure monitoring |
-| Grafana | 192.168.69.153 | Dashboards & alertas |
+| Serviço | Função |
+|---|---|
+| AdGuard | DNS filtering |
+| Zabbix | Infrastructure monitoring |
+| Grafana | Dashboards & alertas |
 | Prometheus | Alpine LXC | Métricas complementares |
 
 ### Stack de Segurança
 - **Wazuh** (SIEM/XDR) integrado ao homelab
 - **AWS EC2** conectado via Tailscale com Zabbix Proxy (SQLite3)
 - CA própria com OpenSSL + Nginx Proxy Manager para HTTPS local
-- VLANs no MikroTik hEX: VLAN 67 (servidores) · VLAN 69 (produção)
+- VLANs no MikroTik hEX: VLAN 110 (servidores) · VLAN 112 (produção)
 
 ---
 
