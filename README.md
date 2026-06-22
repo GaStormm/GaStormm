@@ -63,16 +63,6 @@ Custom Zabbix **UserParameters** for GPU monitoring on a GTX 1050 Ti (via Ollama
 
 ---
 
-### 🌐 Network — MikroTik hEX + FortiSwitch 108F
-
-- MikroTik hEX (RB750Gr3) as core router with **bridge-native VLAN filtering**
-- **VLAN 67** (192.168.67.0/24) — servers
-- **VLAN 69** (192.168.69.0/24) — production services
-- FortiSwitch 108F on server ports
-
-`MikroTik` `FortiSwitch` `VLANs` `WireGuard`
-
----
 
 ## 🔧 Tech Stack
 
