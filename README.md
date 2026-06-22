@@ -1,13 +1,13 @@
-<h1 align="center">Olá, eu sou Vitor 👋</h1>
+<h1 align="center">Hi, I'm Vitor Gonçalves 👋</h1>
 
 <p align="center">
-  <strong>IT Support N1/N2 · Blue Team enthusiast · Homelab builder</strong><br>
-  Florianópolis, SC — Brasil
+  <b>IT Support (N1/N2) · Blue Team enthusiast · Homelab builder</b><br>
+  Florianópolis, Brazil · Open to remote opportunities
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/CompTIA-Security%2B-brightgreen?style=flat-square&logo=comptia" />
-  <img src="https://img.shields.io/badge/Microsoft-SC--900%20%7C%20SC--200-blue?style=flat-square&logo=microsoft" />
+  <img src="https://img.shields.io/badge/CompTIA-Security%2B-00AC4F?style=flat-square&logo=comptia&logoColor=white" />
+  <img src="https://img.shields.io/badge/Microsoft-SC--900%20%7C%20SC--200-0078D4?style=flat-square&logo=microsoft&logoColor=white" />
   <img src="https://img.shields.io/badge/Kubernetes-K3s-326CE5?style=flat-square&logo=kubernetes&logoColor=white" />
   <img src="https://img.shields.io/badge/Proxmox-VE-E57000?style=flat-square&logo=proxmox&logoColor=white" />
   <img src="https://img.shields.io/badge/Wazuh-SIEM%2FXDR-4B0082?style=flat-square" />
@@ -15,67 +15,81 @@
 
 ---
 
-## 👋 Sobre mim
+## About me
 
-Técnico de suporte de TI em ambiente hospitalar (N1/N2) com ~2 anos de experiência, sendo 1 ano em infraestrutura crítica de saúde. Estou em transição ativa para **Blue Team / SOC**, com foco em monitoramento, detecção de ameaças e resposta a incidentes.
+IT Support technician (N1/N2) in a hospital environment, actively transitioning into **Blue Team / SOC**.  
+With ~2 years of IT experience (1 year in critical healthcare infrastructure), I combine my day-to-day support work with hands-on security practice in a self-built homelab: a 3-node Proxmox cluster running K3s Kubernetes with a full monitoring and security stack.
 
-Fora do trabalho, mantenho um **homelab com cluster Kubernetes** onde pratico configuração de SIEM, observabilidade e segurança de redes.
-
-- 🎯 Foco: Blue Team · SOC Analyst · Segurança defensiva
-- 📚 Estudando: CompTIA Security+ · SC-900 → SC-200 (Microsoft Sentinel)
-- 🌐 Disponível para oportunidades remotas
-- 📍 Baseado em Florianópolis, SC — Brasil
+- 🎯 Target role: **SOC Analyst L1/L2** — threat detection, log analysis, incident response
+- 📚 Certifications in progress: **CompTIA Security+** · **SC-900 → SC-200** (Microsoft Sentinel path)
+- 🌐 Available for **remote opportunities** in Blue Team / Security Operations
+- 🗣️ Portuguese (native) · Spanish (fluent) · English (C1)
 
 ---
 
-## 🛡️ Homelab
+## 🖥️ Homelab
 
-### Cluster K3s no Proxmox
-- 3 nós Proxmox rodando **K3s Kubernetes**
-- Namespaces: `homelab`, `monitoring`, `security`
-- MetalLB + Traefik configurados para load balancing e ingress
+### 3-Node Proxmox Cluster + K3s Kubernetes
 
-### Stack de Monitoramento
-| Serviço | Função |
+Migrated from a standalone Proxmox node to a production-grade 3-node cluster running **K3s Kubernetes**.  
+Namespaces: `homelab` · `monitoring` · `security`  
+MetalLB handles load balancing; Traefik manages ingress routing.
+
+`Proxmox VE` `K3s / Kubernetes` `MetalLB` `Traefik`
+
+---
+
+### 📊 Monitoring Stack
+
+| Service | IP | Role |
 |---|---|
-| AdGuard | DNS filtering |
+| AdGuard | DNS filtering & ad blocking |
 | Zabbix | Infrastructure monitoring |
-| Grafana | Dashboards & alertas |
-| Prometheus | Alpine LXC | Métricas complementares |
+| Grafana | Dashboards & alerting |
+| Prometheus | Alpine LXC | Metrics collection |
 
-### Stack de Segurança
-- **Wazuh** (SIEM/XDR) integrado ao homelab
-- **AWS EC2** conectado via Tailscale com Zabbix Proxy (SQLite3)
-- CA própria com OpenSSL + Nginx Proxy Manager para HTTPS local
-- VLANs no MikroTik hEX: VLAN 110 (servidores) · VLAN 112 (produção)
+Custom Zabbix **UserParameters** for GPU monitoring on a GTX 1050 Ti (via Ollama AI server `ga-ia`).
 
 ---
 
-## 🔧 Stack técnica
+### 🛡️ Security Stack — Wazuh SIEM/XDR + AWS
 
-**Segurança & Monitoramento**
+- **Wazuh** deployed in the `security` namespace, ingesting events from the entire homelab
+- **AWS EC2** instance connected via Tailscale, running a **Zabbix Proxy (SQLite3)** for metric buffering
+- Private **CA with OpenSSL** + Nginx Proxy Manager for internal HTTPS — zero public exposure
+- MikroTik hEX handles DNS for the custom local domain
+
+`Wazuh SIEM/XDR` `AWS EC2` `Tailscale` `OpenSSL CA` `Nginx Proxy Manager`
+
+---
+
+### 🌐 Network — MikroTik hEX + FortiSwitch 108F
+
+- MikroTik hEX (RB750Gr3) as core router with **bridge-native VLAN filtering**
+- **VLAN 67** (192.168.67.0/24) — servers
+- **VLAN 69** (192.168.69.0/24) — production services
+- FortiSwitch 108F on server ports
+
+`MikroTik` `FortiSwitch` `VLANs` `WireGuard`
+
+---
+
+## 🔧 Tech Stack
+
+**Security & Monitoring**  
 `Wazuh` `Zabbix` `Grafana` `Prometheus` `AdGuard`
 
-**Infraestrutura & Redes**
-`Proxmox` `Kubernetes / K3s` `Docker` `Linux` `MikroTik` `VLANs`
+**Infrastructure**  
+`Proxmox VE` `K3s / Kubernetes` `Docker` `Linux` `Bash`
 
-**Cloud & Conectividade**
-`AWS EC2` `Tailscale` `Nginx Proxy Manager` `WireGuard`
-
----
-
-## 🌐 Idiomas
-
-| Idioma | Nível |
-|---|---|
-| 🇧🇷 Português | Nativo |
-| 🇪🇸 Espanhol | Fluente |
-| 🇺🇸 Inglês | Avançado (C1) |
+**Networking & Cloud**  
+`MikroTik` `VLANs` `AWS EC2` `Tailscale` `WireGuard`
 
 ---
 
-## 📫 Contato
+## 📫 Contact
 
-- 💼 [LinkedIn](https://linkedin.com/in/vitorg-goncalves/)
-- 📧 vitorg.gcoelho@gmail.com
-- 🔎 Aberto a oportunidades remotas em Blue Team / SOC
+- 💼 [linkedin.com/in/vitorg-goncalves](https://linkedin.com/in/vitorg-goncalves)
+- 🐙 [github.com/GaStormm](https://github.com/GaStormm)
+- 📍 Florianópolis, SC — Brazil
+- 🔎 Open to remote **SOC Analyst / Blue Team** roles
